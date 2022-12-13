@@ -6,7 +6,7 @@ and this UART example:
 https://github.com/raspberrypi/pico-examples/blob/master/uart/uart_advanced/uart_advanced.c
 
 
-### I have modified the way it operates to first send a separate, single byte, data transfer before the 255 byte buffer is transferred.
+### I have modified the way it operates to first send a separate, single byte, data transfer before the buffer is transferred. The output and input buffers have also been reduced from 256 bytes to 255.
 I increased the send rate from 1 per second to 10 per second.
 
 There is also a lot of extra serial output and error capturing and reporting has been added.
