@@ -1,0 +1,365 @@
+UART Sender example using baud rate: 460800
+rp2040_chip_version: 1
+rp2040_rom_version: 1
+get_core_num: 0
+
+Requested UART Baud Rate: 460800
+Actual UART Baud Rate: 460829
+FIFO Enabled: false
+
+UART Sender says: The value: 0xFF (255) (buffer size) followed immediately by the buffer printed below will be sent to the receiver every: 100 ms
+01 02 03 04 05 06 07 08 09 0A 0B 0C 0D 0E 0F 10
+11 12 13 14 15 16 17 18 19 1A 1B 1C 1D 1E 1F 20
+21 22 23 24 25 26 27 28 29 2A 2B 2C 2D 2E 2F 30
+31 32 33 34 35 36 37 38 39 3A 3B 3C 3D 3E 3F 40
+41 42 43 44 45 46 47 48 49 4A 4B 4C 4D 4E 4F 50
+51 52 53 54 55 56 57 58 59 5A 5B 5C 5D 5E 5F 60
+61 62 63 64 65 66 67 68 69 6A 6B 6C 6D 6E 6F 70
+71 72 73 74 75 76 77 78 79 7A 7B 7C 7D 7E 7F 80
+81 82 83 84 85 86 87 88 89 8A 8B 8C 8D 8E 8F 90
+91 92 93 94 95 96 97 98 99 9A 9B 9C 9D 9E 9F A0
+A1 A2 A3 A4 A5 A6 A7 A8 A9 AA AB AC AD AE AF B0
+B1 B2 B3 B4 B5 B6 B7 B8 B9 BA BB BC BD BE BF C0
+C1 C2 C3 C4 C5 C6 C7 C8 C9 CA CB CC CD CE CF D0
+D1 D2 D3 D4 D5 D6 D7 D8 D9 DA DB DC DD DE DF E0
+E1 E2 E3 E4 E5 E6 E7 E8 E9 EA EB EC ED EE EF F0
+F1 F2 F3 F4 F5 F6 F7 F8 F9 FA FB FC FD FE FF
+
+The value 0xFF (255) is expected to be returned followed by a reversed version of the above buffer
+
+
+Seconds: 0000000.000
+LoopRate: 0000000
+sendCounter: 0000000
+sendRate: 0000000
+receiveCounter: 0000000
+receiveRate: 0000000
+Receive errorCount: 000
+Receive incompleteReceiveCount: 000
+Sending buffer...
+UART Sender says: Output buffer page 1 sent, buffer size: 255
+UART Sender says: read page 1 back from the receiver, received page size: 255 expected: 255 lastExpected: 000
+FF FE FD FC FB FA F9 F8 F7 F6 F5 F4 F3 F2 F1 F0
+EF EE ED EC EB EA E9 E8 E7 E6 E5 E4 E3 E2 E1 E0
+DF DE DD DC DB DA D9 D8 D7 D6 D5 D4 D3 D2 D1 D0
+CF CE CD CC CB CA C9 C8 C7 C6 C5 C4 C3 C2 C1 C0
+BF BE BD BC BB BA B9 B8 B7 B6 B5 B4 B3 B2 B1 B0
+AF AE AD AC AB AA A9 A8 A7 A6 A5 A4 A3 A2 A1 A0
+9F 9E 9D 9C 9B 9A 99 98 97 96 95 94 93 92 91 90
+8F 8E 8D 8C 8B 8A 89 88 87 86 85 84 83 82 81 80
+7F 7E 7D 7C 7B 7A 79 78 77 76 75 74 73 72 71 70
+6F 6E 6D 6C 6B 6A 69 68 67 66 65 64 63 62 61 60
+5F 5E 5D 5C 5B 5A 59 58 57 56 55 54 53 52 51 50
+4F 4E 4D 4C 4B 4A 49 48 47 46 45 44 43 42 41 40
+3F 3E 3D 3C 3B 3A 39 38 37 36 35 34 33 32 31 30
+2F 2E 2D 2C 2B 2A 29 28 27 26 25 24 23 22 21 20
+1F 1E 1D 1C 1B 1A 19 18 17 16 15 14 13 12 11 10
+0F 0E 0D 0C 0B 0A 09 08 07 06 05 04 03 02 01
+UART Sender says: Verifying received data...
+
+Seconds: 0000000.100
+LoopRate: 0000000
+sendCounter: 0000001
+sendRate: 0000000
+receiveCounter: 0000001
+receiveRate: 0000000
+Receive errorCount: 000
+Receive incompleteReceiveCount: 000
+Sending buffer...
+UART Sender says: Output buffer page 2 sent, buffer size: 255
+UART Sender says: read page 2 back from the receiver, received page size: 255 expected: 255 lastExpected: 255
+FF FE FD FC FB FA F9 F8 F7 F6 F5 F4 F3 F2 F1 F0
+EF EE ED EC EB EA E9 E8 E7 E6 E5 E4 E3 E2 E1 E0
+DF DE DD DC DB DA D9 D8 D7 D6 D5 D4 D3 D2 D1 D0
+CF CE CD CC CB CA C9 C8 C7 C6 C5 C4 C3 C2 C1 C0
+BF BE BD BC BB BA B9 B8 B7 B6 B5 B4 B3 B2 B1 B0
+AF AE AD AC AB AA A9 A8 A7 A6 A5 A4 A3 A2 A1 A0
+9F 9E 9D 9C 9B 9A 99 98 97 96 95 94 93 92 91 90
+8F 8E 8D 8C 8B 8A 89 88 87 86 85 84 83 82 81 80
+7F 7E 7D 7C 7B 7A 79 78 77 76 75 74 73 72 71 70
+6F 6E 6D 6C 6B 6A 69 68 67 66 65 64 63 62 61 60
+5F 5E 5D 5C 5B 5A 59 58 57 56 55 54 53 52 51 50
+4F 4E 4D 4C 4B 4A 49 48 47 46 45 44 43 42 41 40
+3F 3E 3D 3C 3B 3A 39 38 37 36 35 34 33 32 31 30
+2F 2E 2D 2C 2B 2A 29 28 27 26 25 24 23 22 21 20
+1F 1E 1D 1C 1B 1A 19 18 17 16 15 14 13 12 11 10
+0F 0E 0D 0C 0B 0A 09 08 07 06 05 04 03 02 01
+UART Sender says: Verifying received data...
+
+Seconds: 0000000.200
+LoopRate: 0000000
+sendCounter: 0000002
+sendRate: 0000000
+receiveCounter: 0000002
+receiveRate: 0000000
+Receive errorCount: 000
+Receive incompleteReceiveCount: 000
+Sending buffer...
+UART Sender says: Output buffer page 3 sent, buffer size: 255
+UART Sender says: read page 3 back from the receiver, received page size: 255 expected: 255 lastExpected: 255
+FF FE FD FC FB FA F9 F8 F7 F6 F5 F4 F3 F2 F1 F0
+EF EE ED EC EB EA E9 E8 E7 E6 E5 E4 E3 E2 E1 E0
+DF DE DD DC DB DA D9 D8 D7 D6 D5 D4 D3 D2 D1 D0
+CF CE CD CC CB CA C9 C8 C7 C6 C5 C4 C3 C2 C1 C0
+BF BE BD BC BB BA B9 B8 B7 B6 B5 B4 B3 B2 B1 B0
+AF AE AD AC AB AA A9 A8 A7 A6 A5 A4 A3 A2 A1 A0
+9F 9E 9D 9C 9B 9A 99 98 97 96 95 94 93 92 91 90
+8F 8E 8D 8C 8B 8A 89 88 87 86 85 84 83 82 81 80
+7F 7E 7D 7C 7B 7A 79 78 77 76 75 74 73 72 71 70
+6F 6E 6D 6C 6B 6A 69 68 67 66 65 64 63 62 61 60
+5F 5E 5D 5C 5B 5A 59 58 57 56 55 54 53 52 51 50
+4F 4E 4D 4C 4B 4A 49 48 47 46 45 44 43 42 41 40
+3F 3E 3D 3C 3B 3A 39 38 37 36 35 34 33 32 31 30
+2F 2E 2D 2C 2B 2A 29 28 27 26 25 24 23 22 21 20
+1F 1E 1D 1C 1B 1A 19 18 17 16 15 14 13 12 11 10
+0F 0E 0D 0C 0B 0A 09 08 07 06 05 04 03 02 01
+UART Sender says: Verifying received data...
+
+Seconds: 0000000.300
+LoopRate: 0000000
+sendCounter: 0000003
+sendRate: 0000000
+receiveCounter: 0000003
+receiveRate: 0000000
+Receive errorCount: 000
+Receive incompleteReceiveCount: 000
+Sending buffer...
+UART Sender says: Output buffer page 4 sent, buffer size: 255
+UART Sender says: read page 4 back from the receiver, received page size: 255 expected: 255 lastExpected: 255
+FF FE FD FC FB FA F9 F8 F7 F6 F5 F4 F3 F2 F1 F0
+EF EE ED EC EB EA E9 E8 E7 E6 E5 E4 E3 E2 E1 E0
+DF DE DD DC DB DA D9 D8 D7 D6 D5 D4 D3 D2 D1 D0
+CF CE CD CC CB CA C9 C8 C7 C6 C5 C4 C3 C2 C1 C0
+BF BE BD BC BB BA B9 B8 B7 B6 B5 B4 B3 B2 B1 B0
+AF AE AD AC AB AA A9 A8 A7 A6 A5 A4 A3 A2 A1 A0
+9F 9E 9D 9C 9B 9A 99 98 97 96 95 94 93 92 91 90
+8F 8E 8D 8C 8B 8A 89 88 87 86 85 84 83 82 81 80
+7F 7E 7D 7C 7B 7A 79 78 77 76 75 74 73 72 71 70
+6F 6E 6D 6C 6B 6A 69 68 67 66 65 64 63 62 61 60
+5F 5E 5D 5C 5B 5A 59 58 57 56 55 54 53 52 51 50
+4F 4E 4D 4C 4B 4A 49 48 47 46 45 44 43 42 41 40
+3F 3E 3D 3C 3B 3A 39 38 37 36 35 34 33 32 31 30
+2F 2E 2D 2C 2B 2A 29 28 27 26 25 24 23 22 21 20
+1F 1E 1D 1C 1B 1A 19 18 17 16 15 14 13 12 11 10
+0F 0E 0D 0C 0B 0A 09 08 07 06 05 04 03 02 01
+UART Sender says: Verifying received data...
+
+Seconds: 0000000.400
+LoopRate: 0000000
+sendCounter: 0000004
+sendRate: 0000000
+receiveCounter: 0000004
+receiveRate: 0000000
+Receive errorCount: 000
+Receive incompleteReceiveCount: 000
+Sending buffer...
+UART Sender says: Output buffer page 5 sent, buffer size: 255
+UART Sender says: read page 5 back from the receiver, received page size: 255 expected: 255 lastExpected: 255
+FF FE FD FC FB FA F9 F8 F7 F6 F5 F4 F3 F2 F1 F0
+EF EE ED EC EB EA E9 E8 E7 E6 E5 E4 E3 E2 E1 E0
+DF DE DD DC DB DA D9 D8 D7 D6 D5 D4 D3 D2 D1 D0
+CF CE CD CC CB CA C9 C8 C7 C6 C5 C4 C3 C2 C1 C0
+BF BE BD BC BB BA B9 B8 B7 B6 B5 B4 B3 B2 B1 B0
+AF AE AD AC AB AA A9 A8 A7 A6 A5 A4 A3 A2 A1 A0
+9F 9E 9D 9C 9B 9A 99 98 97 96 95 94 93 92 91 90
+8F 8E 8D 8C 8B 8A 89 88 87 86 85 84 83 82 81 80
+7F 7E 7D 7C 7B 7A 79 78 77 76 75 74 73 72 71 70
+6F 6E 6D 6C 6B 6A 69 68 67 66 65 64 63 62 61 60
+5F 5E 5D 5C 5B 5A 59 58 57 56 55 54 53 52 51 50
+4F 4E 4D 4C 4B 4A 49 48 47 46 45 44 43 42 41 40
+3F 3E 3D 3C 3B 3A 39 38 37 36 35 34 33 32 31 30
+2F 2E 2D 2C 2B 2A 29 28 27 26 25 24 23 22 21 20
+1F 1E 1D 1C 1B 1A 19 18 17 16 15 14 13 12 11 10
+0F 0E 0D 0C 0B 0A 09 08 07 06 05 04 03 02 01
+UART Sender says: Verifying received data...
+
+Seconds: 0000000.500
+LoopRate: 0000000
+sendCounter: 0000005
+sendRate: 0000000
+receiveCounter: 0000005
+receiveRate: 0000000
+Receive errorCount: 000
+Receive incompleteReceiveCount: 000
+Sending buffer...
+UART Sender says: Output buffer page 6 sent, buffer size: 255
+ERROR!!! The page 6 response was incomplete!!! _expectedByteCount: 255 and _bytesReceived: 254 should equal the Buffer Length: 255
+FF FE FD FC FB FA F9 F8 F7 F6 F5 F4 F3 F2 F1 F0
+EF EE ED EC EB EA E9 E8 E7 E6 E4 E3 E2 E1 E0 DF
+DE DD DC DB DA D9 D8 D7 D6 D5 D4 D3 D2 D1 D0 CF
+CE CD CC CB CA C9 C8 C7 C6 C5 C4 C3 C2 C1 C0 BF
+BE BD BC BB BA B9 B8 B7 B6 B5 B4 B3 B2 B1 B0 AF
+AE AD AC AB AA A9 A8 A7 A6 A5 A4 A3 A2 A1 A0 9F
+9E 9D 9C 9B 9A 99 98 97 96 95 94 93 92 91 90 8F
+8E 8D 8C 8B 8A 89 88 87 86 85 84 83 82 81 80 7F
+7E 7D 7C 7B 7A 79 78 77 76 75 74 73 72 71 70 6F
+6E 6D 6C 6B 6A 69 68 67 66 65 64 63 62 61 60 5F
+5E 5D 5C 5B 5A 59 58 57 56 55 54 53 52 51 50 4F
+4E 4D 4C 4B 4A 49 48 47 46 45 44 43 42 41 40 3F
+3E 3D 3C 3B 3A 39 38 37 36 35 34 33 32 31 30 2F
+2E 2D 2C 2B 2A 29 28 27 26 25 24 23 22 21 20 1F
+1E 1D 1C 1B 1A 19 18 17 16 15 14 13 12 11 10 0F
+0E 0D 0C 0B 0A 09 08 07 06 05 04 03 02 01 00
+UART Sender says: ERROR!!! Received incomplete buffer!!! (printed above)
+ERROR! page: 0000006 byte index: 026 expected: 0xE5 received 0xE4
+
+Seconds: 0000000.600
+LoopRate: 0000000
+sendCounter: 0000006
+sendRate: 0000000
+receiveCounter: 0000005
+receiveRate: 0000000
+Receive errorCount: 001
+Receive incompleteReceiveCount: 001
+Sending buffer...
+UART Sender says: Output buffer page 7 sent, buffer size: 255
+ERROR!!! The page 7 response was incomplete!!! _expectedByteCount: 255 and _bytesReceived: 254 should equal the Buffer Length: 255
+FF FE FD FC FB FA F9 F8 F7 F6 F5 F4 F3 F2 F0 EF
+EE ED EC EB EA E9 E8 E7 E6 E5 E4 E3 E2 E1 E0 DF
+DE DD DC DB DA D9 D8 D7 D6 D5 D4 D3 D2 D1 D0 CF
+CE CD CC CB CA C9 C8 C7 C6 C5 C4 C3 C2 C1 C0 BF
+BE BD BC BB BA B9 B8 B7 B6 B5 B4 B3 B2 B1 B0 AF
+AE AD AC AB AA A9 A8 A7 A6 A5 A4 A3 A2 A1 A0 9F
+9E 9D 9C 9B 9A 99 98 97 96 95 94 93 92 91 90 8F
+8E 8D 8C 8B 8A 89 88 87 86 85 84 83 82 81 80 7F
+7E 7D 7C 7B 7A 79 78 77 76 75 74 73 72 71 70 6F
+6E 6D 6C 6B 6A 69 68 67 66 65 64 63 62 61 60 5F
+5E 5D 5C 5B 5A 59 58 57 56 55 54 53 52 51 50 4F
+4E 4D 4C 4B 4A 49 48 47 46 45 44 43 42 41 40 3F
+3E 3D 3C 3B 3A 39 38 37 36 35 34 33 32 31 30 2F
+2E 2D 2C 2B 2A 29 28 27 26 25 24 23 22 21 20 1F
+1E 1D 1C 1B 1A 19 18 17 16 15 14 13 12 11 10 0F
+0E 0D 0C 0B 0A 09 08 07 06 05 04 03 02 01 00
+UART Sender says: ERROR!!! Received incomplete buffer!!! (printed above)
+ERROR! page: 0000007 byte index: 014 expected: 0xF1 received 0xF0
+
+Seconds: 0000000.700
+LoopRate: 0000000
+sendCounter: 0000007
+sendRate: 0000000
+receiveCounter: 0000005
+receiveRate: 0000000
+Receive errorCount: 002
+Receive incompleteReceiveCount: 002
+Sending buffer...
+UART Sender says: Output buffer page 8 sent, buffer size: 255
+ERROR!!! The page 8 response was incomplete!!! _expectedByteCount: 255 and _bytesReceived: 254 should equal the Buffer Length: 255
+FF FE FD FC FB FA F9 F8 F7 F6 F5 F4 F3 F2 F1 F0
+EF EE ED EC EB EA E9 E8 E7 E6 E5 E4 E3 E2 E1 E0
+DF DE DD DC DB D9 D8 D7 D6 D5 D4 D3 D2 D1 D0 CF
+CE CD CC CB CA C9 C8 C7 C6 C5 C4 C3 C2 C1 C0 BF
+BE BD BC BB BA B9 B8 B7 B6 B5 B4 B3 B2 B1 B0 AF
+AE AD AC AB AA A9 A8 A7 A6 A5 A4 A3 A2 A1 A0 9F
+9E 9D 9C 9B 9A 99 98 97 96 95 94 93 92 91 90 8F
+8E 8D 8C 8B 8A 89 88 87 86 85 84 83 82 81 80 7F
+7E 7D 7C 7B 7A 79 78 77 76 75 74 73 72 71 70 6F
+6E 6D 6C 6B 6A 69 68 67 66 65 64 63 62 61 60 5F
+5E 5D 5C 5B 5A 59 58 57 56 55 54 53 52 51 50 4F
+4E 4D 4C 4B 4A 49 48 47 46 45 44 43 42 41 40 3F
+3E 3D 3C 3B 3A 39 38 37 36 35 34 33 32 31 30 2F
+2E 2D 2C 2B 2A 29 28 27 26 25 24 23 22 21 20 1F
+1E 1D 1C 1B 1A 19 18 17 16 15 14 13 12 11 10 0F
+0E 0D 0C 0B 0A 09 08 07 06 05 04 03 02 01 00
+UART Sender says: ERROR!!! Received incomplete buffer!!! (printed above)
+ERROR! page: 0000008 byte index: 037 expected: 0xDA received 0xD9
+
+Seconds: 0000000.800
+LoopRate: 0000000
+sendCounter: 0000008
+sendRate: 0000000
+receiveCounter: 0000005
+receiveRate: 0000000
+Receive errorCount: 003
+Receive incompleteReceiveCount: 003
+Sending buffer...
+UART Sender says: Output buffer page 9 sent, buffer size: 255
+ERROR!!! The page 9 response was incomplete!!! _expectedByteCount: 255 and _bytesReceived: 254 should equal the Buffer Length: 255
+FF FE FD FC FB FA F9 F8 F7 F6 F5 F4 F3 F2 F1 F0
+EF EE ED EC EB EA E9 E8 E7 E6 E5 E4 E3 E2 E1 E0
+DF DE DD DC DB DA D9 D8 D7 D6 D5 D3 D2 D1 D0 CF
+CE CD CC CB CA C9 C8 C7 C6 C5 C4 C3 C2 C1 C0 BF
+BE BD BC BB BA B9 B8 B7 B6 B5 B4 B3 B2 B1 B0 AF
+AE AD AC AB AA A9 A8 A7 A6 A5 A4 A3 A2 A1 A0 9F
+9E 9D 9C 9B 9A 99 98 97 96 95 94 93 92 91 90 8F
+8E 8D 8C 8B 8A 89 88 87 86 85 84 83 82 81 80 7F
+7E 7D 7C 7B 7A 79 78 77 76 75 74 73 72 71 70 6F
+6E 6D 6C 6B 6A 69 68 67 66 65 64 63 62 61 60 5F
+5E 5D 5C 5B 5A 59 58 57 56 55 54 53 52 51 50 4F
+4E 4D 4C 4B 4A 49 48 47 46 45 44 43 42 41 40 3F
+3E 3D 3C 3B 3A 39 38 37 36 35 34 33 32 31 30 2F
+2E 2D 2C 2B 2A 29 28 27 26 25 24 23 22 21 20 1F
+1E 1D 1C 1B 1A 19 18 17 16 15 14 13 12 11 10 0F
+0E 0D 0C 0B 0A 09 08 07 06 05 04 03 02 01 00
+UART Sender says: ERROR!!! Received incomplete buffer!!! (printed above)
+ERROR! page: 0000009 byte index: 043 expected: 0xD4 received 0xD3
+
+Seconds: 0000000.900
+LoopRate: 0000000
+sendCounter: 0000009
+sendRate: 0000000
+receiveCounter: 0000005
+receiveRate: 0000000
+Receive errorCount: 004
+Receive incompleteReceiveCount: 004
+Sending buffer...
+UART Sender says: Output buffer page 10 sent, buffer size: 255
+ERROR!!! The page 10 response was incomplete!!! _expectedByteCount: 255 and _bytesReceived: 254 should equal the Buffer Length: 255
+FF FE FD FC FB FA F9 F7 F6 F5 F4 F3 F2 F1 F0 EF
+EE ED EC EB EA E9 E8 E7 E6 E5 E4 E3 E2 E1 E0 DF
+DE DD DC DB DA D9 D8 D7 D6 D5 D4 D3 D2 D1 D0 CF
+CE CD CC CB CA C9 C8 C7 C6 C5 C4 C3 C2 C1 C0 BF
+BE BD BC BB BA B9 B8 B7 B6 B5 B4 B3 B2 B1 B0 AF
+AE AD AC AB AA A9 A8 A7 A6 A5 A4 A3 A2 A1 A0 9F
+9E 9D 9C 9B 9A 99 98 97 96 95 94 93 92 91 90 8F
+8E 8D 8C 8B 8A 89 88 87 86 85 84 83 82 81 80 7F
+7E 7D 7C 7B 7A 79 78 77 76 75 74 73 72 71 70 6F
+6E 6D 6C 6B 6A 69 68 67 66 65 64 63 62 61 60 5F
+5E 5D 5C 5B 5A 59 58 57 56 55 54 53 52 51 50 4F
+4E 4D 4C 4B 4A 49 48 47 46 45 44 43 42 41 40 3F
+3E 3D 3C 3B 3A 39 38 37 36 35 34 33 32 31 30 2F
+2E 2D 2C 2B 2A 29 28 27 26 25 24 23 22 21 20 1F
+1E 1D 1C 1B 1A 19 18 17 16 15 14 13 12 11 10 0F
+0E 0D 0C 0B 0A 09 08 07 06 05 04 03 02 01 00
+UART Sender says: ERROR!!! Received incomplete buffer!!! (printed above)
+ERROR! page: 0000010 byte index: 007 expected: 0xF8 received 0xF7
+
+Seconds: 0000001.000
+LoopRate: 0748806
+sendCounter: 0000010
+sendRate: 0000010
+receiveCounter: 0000005
+receiveRate: 0000005
+Receive errorCount: 005
+Receive incompleteReceiveCount: 005
+Sending buffer...
+UART Sender says: Output buffer page 11 sent, buffer size: 255
+ERROR!!! The page 11 response was incomplete!!! _expectedByteCount: 255 and _bytesReceived: 254 should equal the Buffer Length: 255
+FF FE FD FC FB FA F9 F8 F7 F6 F5 F4 F3 F2 F1 F0
+EF EE ED EC EB EA E9 E8 E7 E6 E5 E4 E3 E2 E1 E0
+DF DD DC DB DA D9 D8 D7 D6 D5 D4 D3 D2 D1 D0 CF
+CE CD CC CB CA C9 C8 C7 C6 C5 C4 C3 C2 C1 C0 BF
+BE BD BC BB BA B9 B8 B7 B6 B5 B4 B3 B2 B1 B0 AF
+AE AD AC AB AA A9 A8 A7 A6 A5 A4 A3 A2 A1 A0 9F
+9E 9D 9C 9B 9A 99 98 97 96 95 94 93 92 91 90 8F
+8E 8D 8C 8B 8A 89 88 87 86 85 84 83 82 81 80 7F
+7E 7D 7C 7B 7A 79 78 77 76 75 74 73 72 71 70 6F
+6E 6D 6C 6B 6A 69 68 67 66 65 64 63 62 61 60 5F
+5E 5D 5C 5B 5A 59 58 57 56 55 54 53 52 51 50 4F
+4E 4D 4C 4B 4A 49 48 47 46 45 44 43 42 41 40 3F
+3E 3D 3C 3B 3A 39 38 37 36 35 34 33 32 31 30 2F
+2E 2D 2C 2B 2A 29 28 27 26 25 24 23 22 21 20 1F
+1E 1D 1C 1B 1A 19 18 17 16 15 14 13 12 11 10 0F
+0E 0D 0C 0B 0A 09 08 07 06 05 04 03 02 01 00
+UART Sender says: ERROR!!! Received incomplete buffer!!! (printed above)
+ERROR! page: 0000011 byte index: 033 expected: 0xDE received 0xDD
+
+Seconds: 0000001.100
+LoopRate: 0748806
+sendCounter: 0000011
+sendRate: 0000010
+receiveCounter: 0000005
+receiveRate: 0000005
+Receive errorCount: 006
+Receive incompleteReceiveCount: 006
+Sending buffer...
+UART Sender says: Output buffer page 12 sent, buffer size: 255

@@ -1,0 +1,408 @@
+UART receiver example using baud rate: 230400
+rp2040_chip_version: 1
+rp2040_rom_version: 1
+get_core_num: 0
+
+Requested UART Baud Rate: 230400
+Actual UART Baud Rate: 230414
+FIFO Enabled: false
+
+UART Receiver says: After reading UART data from RX, the value: 0xFF (255) (buffer size) and then the following buffer will be written to the sender:
+FF FE FD FC FB FA F9 F8 F7 F6 F5 F4 F3 F2 F1 F0
+EF EE ED EC EB EA E9 E8 E7 E6 E5 E4 E3 E2 E1 E0
+DF DE DD DC DB DA D9 D8 D7 D6 D5 D4 D3 D2 D1 D0
+CF CE CD CC CB CA C9 C8 C7 C6 C5 C4 C3 C2 C1 C0
+BF BE BD BC BB BA B9 B8 B7 B6 B5 B4 B3 B2 B1 B0
+AF AE AD AC AB AA A9 A8 A7 A6 A5 A4 A3 A2 A1 A0
+9F 9E 9D 9C 9B 9A 99 98 97 96 95 94 93 92 91 90
+8F 8E 8D 8C 8B 8A 89 88 87 86 85 84 83 82 81 80
+7F 7E 7D 7C 7B 7A 79 78 77 76 75 74 73 72 71 70
+6F 6E 6D 6C 6B 6A 69 68 67 66 65 64 63 62 61 60
+5F 5E 5D 5C 5B 5A 59 58 57 56 55 54 53 52 51 50
+4F 4E 4D 4C 4B 4A 49 48 47 46 45 44 43 42 41 40
+3F 3E 3D 3C 3B 3A 39 38 37 36 35 34 33 32 31 30
+2F 2E 2D 2C 2B 2A 29 28 27 26 25 24 23 22 21 20
+1F 1E 1D 1C 1B 1A 19 18 17 16 15 14 13 12 11 10
+0F 0E 0D 0C 0B 0A 09 08 07 06 05 04 03 02 01
+
+
+Seconds: 0000000.011
+receiveCounter: 0000001
+receiveRate: 0000000
+Receive errorCount: 000
+Data Received...
+UART Receiver says: read page 1 from the sender, received page size: 000 expected: 000 lastExpected: 000
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+UART Receiver says: Responded with Output buffer page 1, buffer size: 255
+UART Receiver says: Verifying received data...
+Error page: 1 bytesExpected: 000 should equal the Buffer Length: 255
+Error page: 0000001 index: 000 expected: 0x01 received 0x00
+Error page: 0000001 index: 001 expected: 0x02 received 0x00
+Error page: 0000001 index: 002 expected: 0x03 received 0x00
+Error page: 0000001 index: 003 expected: 0x04 received 0x00
+Error page: 0000001 index: 004 expected: 0x05 received 0x00
+Error page: 0000001 index: 005 expected: 0x06 received 0x00
+Error page: 0000001 index: 006 expected: 0x07 received 0x00
+Error page: 0000001 index: 007 expected: 0x08 received 0x00
+Error page: 0000001 index: 008 expected: 0x09 received 0x00
+Error page: 0000001 index: 009 expected: 0x0A received 0x00
+Error page: 0000001 index: 010 expected: 0x0B received 0x00
+Error page: 0000001 index: 011 expected: 0x0C received 0x00
+Error page: 0000001 index: 012 expected: 0x0D received 0x00
+Error page: 0000001 index: 013 expected: 0x0E received 0x00
+Error page: 0000001 index: 014 expected: 0x0F received 0x00
+Error page: 0000001 index: 015 expected: 0x10 received 0x00
+Error page: 0000001 index: 016 expected: 0x11 received 0x00
+Error page: 0000001 index: 017 expected: 0x12 received 0x00
+Error page: 0000001 index: 018 expected: 0x13 received 0x00
+Error page: 0000001 index: 019 expected: 0x14 received 0x00
+Error page: 0000001 index: 020 expected: 0x15 received 0x00
+Error page: 0000001 index: 021 expected: 0x16 received 0x00
+Error page: 0000001 index: 022 expected: 0x17 received 0x00
+Error page: 0000001 index: 023 expected: 0x18 received 0x00
+Error page: 0000001 index: 024 expected: 0x19 received 0x00
+Error page: 0000001 index: 025 expected: 0x1A received 0x00
+Error page: 0000001 index: 026 expected: 0x1B received 0x00
+Error page: 0000001 index: 027 expected: 0x1C received 0x00
+Error page: 0000001 index: 028 expected: 0x1D received 0x00
+Error page: 0000001 index: 029 expected: 0x1E received 0x00
+Error page: 0000001 index: 030 expected: 0x1F received 0x00
+Error page: 0000001 index: 031 expected: 0x20 received 0x00
+Error page: 0000001 index: 032 expected: 0x21 received 0x00
+Error page: 0000001 index: 033 expected: 0x22 received 0x00
+Error page: 0000001 index: 034 expected: 0x23 received 0x00
+Error page: 0000001 index: 035 expected: 0x24 received 0x00
+Error page: 0000001 index: 036 expected: 0x25 received 0x00
+Error page: 0000001 index: 037 expected: 0x26 received 0x00
+Error page: 0000001 index: 038 expected: 0x27 received 0x00
+Error page: 0000001 index: 039 expected: 0x28 received 0x00
+Error page: 0000001 index: 040 expected: 0x29 received 0x00
+Error page: 0000001 index: 041 expected: 0x2A received 0x00
+Error page: 0000001 index: 042 expected: 0x2B received 0x00
+Error page: 0000001 index: 043 expected: 0x2C received 0x00
+Error page: 0000001 index: 044 expected: 0x2D received 0x00
+Error page: 0000001 index: 045 expected: 0x2E received 0x00
+Error page: 0000001 index: 046 expected: 0x2F received 0x00
+Error page: 0000001 index: 047 expected: 0x30 received 0x00
+Error page: 0000001 index: 048 expected: 0x31 received 0x00
+Error page: 0000001 index: 049 expected: 0x32 received 0x00
+Error page: 0000001 index: 050 expected: 0x33 received 0x00
+Error page: 0000001 index: 051 expected: 0x34 received 0x00
+Error page: 0000001 index: 052 expected: 0x35 received 0x00
+Error page: 0000001 index: 053 expected: 0x36 received 0x00
+Error page: 0000001 index: 054 expected: 0x37 received 0x00
+Error page: 0000001 index: 055 expected: 0x38 received 0x00
+Error page: 0000001 index: 056 expected: 0x39 received 0x00
+Error page: 0000001 index: 057 expected: 0x3A received 0x00
+Error page: 0000001 index: 058 expected: 0x3B received 0x00
+Error page: 0000001 index: 059 expected: 0x3C received 0x00
+Error page: 0000001 index: 060 expected: 0x3D received 0x00
+Error page: 0000001 index: 061 expected: 0x3E received 0x00
+Error page: 0000001 index: 062 expected: 0x3F received 0x00
+Error page: 0000001 index: 063 expected: 0x40 received 0x00
+Error page: 0000001 index: 064 expected: 0x41 received 0x00
+Error page: 0000001 index: 065 expected: 0x42 received 0x00
+Error page: 0000001 index: 066 expected: 0x43 received 0x00
+Error page: 0000001 index: 067 expected: 0x44 received 0x00
+Error page: 0000001 index: 068 expected: 0x45 received 0x00
+Error page: 0000001 index: 069 expected: 0x46 received 0x00
+Error page: 0000001 index: 070 expected: 0x47 received 0x00
+Error page: 0000001 index: 071 expected: 0x48 received 0x00
+Error page: 0000001 index: 072 expected: 0x49 received 0x00
+Error page: 0000001 index: 073 expected: 0x4A received 0x00
+Error page: 0000001 index: 074 expected: 0x4B received 0x00
+Error page: 0000001 index: 075 expected: 0x4C received 0x00
+Error page: 0000001 index: 076 expected: 0x4D received 0x00
+Error page: 0000001 index: 077 expected: 0x4E received 0x00
+Error page: 0000001 index: 078 expected: 0x4F received 0x00
+Error page: 0000001 index: 079 expected: 0x50 received 0x00
+Error page: 0000001 index: 080 expected: 0x51 received 0x00
+Error page: 0000001 index: 081 expected: 0x52 received 0x00
+Error page: 0000001 index: 082 expected: 0x53 received 0x00
+Error page: 0000001 index: 083 expected: 0x54 received 0x00
+Error page: 0000001 index: 084 expected: 0x55 received 0x00
+Error page: 0000001 index: 085 expected: 0x56 received 0x00
+Error page: 0000001 index: 086 expected: 0x57 received 0x00
+Error page: 0000001 index: 087 expected: 0x58 received 0x00
+Error page: 0000001 index: 088 expected: 0x59 received 0x00
+Error page: 0000001 index: 089 expected: 0x5A received 0x00
+Error page: 0000001 index: 090 expected: 0x5B received 0x00
+Error page: 0000001 index: 091 expected: 0x5C received 0x00
+Error page: 0000001 index: 092 expected: 0x5D received 0x00
+Error page: 0000001 index: 093 expected: 0x5E received 0x00
+Error page: 0000001 index: 094 expected: 0x5F received 0x00
+Error page: 0000001 index: 095 expected: 0x60 received 0x00
+Error page: 0000001 index: 096 expected: 0x61 received 0x00
+Error page: 0000001 index: 097 expected: 0x62 received 0x00
+Error page: 0000001 index: 098 expected: 0x63 received 0x00
+Error page: 0000001 index: 099 expected: 0x64 received 0x00
+Error page: 0000001 index: 100 expected: 0x65 received 0x00
+Error page: 0000001 index: 101 expected: 0x66 received 0x00
+Error page: 0000001 index: 102 expected: 0x67 received 0x00
+Error page: 0000001 index: 103 expected: 0x68 received 0x00
+Error page: 0000001 index: 104 expected: 0x69 received 0x00
+Error page: 0000001 index: 105 expected: 0x6A received 0x00
+Error page: 0000001 index: 106 expected: 0x6B received 0x00
+Error page: 0000001 index: 107 expected: 0x6C received 0x00
+Error page: 0000001 index: 108 expected: 0x6D received 0x00
+Error page: 0000001 index: 109 expected: 0x6E received 0x00
+Error page: 0000001 index: 110 expected: 0x6F received 0x00
+Error page: 0000001 index: 111 expected: 0x70 received 0x00
+Error page: 0000001 index: 112 expected: 0x71 received 0x00
+Error page: 0000001 index: 113 expected: 0x72 received 0x00
+Error page: 0000001 index: 114 expected: 0x73 received 0x00
+Error page: 0000001 index: 115 expected: 0x74 received 0x00
+Error page: 0000001 index: 116 expected: 0x75 received 0x00
+Error page: 0000001 index: 117 expected: 0x76 received 0x00
+Error page: 0000001 index: 118 expected: 0x77 received 0x00
+Error page: 0000001 index: 119 expected: 0x78 received 0x00
+Error page: 0000001 index: 120 expected: 0x79 received 0x00
+Error page: 0000001 index: 121 expected: 0x7A received 0x00
+Error page: 0000001 index: 122 expected: 0x7B received 0x00
+Error page: 0000001 index: 123 expected: 0x7C received 0x00
+Error page: 0000001 index: 124 expected: 0x7D received 0x00
+Error page: 0000001 index: 125 expected: 0x7E received 0x00
+Error page: 0000001 index: 126 expected: 0x7F received 0x00
+Error page: 0000001 index: 127 expected: 0x80 received 0x00
+Error page: 0000001 index: 128 expected: 0x81 received 0x00
+Error page: 0000001 index: 129 expected: 0x82 received 0x00
+Error page: 0000001 index: 130 expected: 0x83 received 0x00
+Error page: 0000001 index: 131 expected: 0x84 received 0x00
+Error page: 0000001 index: 132 expected: 0x85 received 0x00
+Error page: 0000001 index: 133 expected: 0x86 received 0x00
+Error page: 0000001 index: 134 expected: 0x87 received 0x00
+Error page: 0000001 index: 135 expected: 0x88 received 0x00
+Error page: 0000001 index: 136 expected: 0x89 received 0x00
+Error page: 0000001 index: 137 expected: 0x8A received 0x00
+Error page: 0000001 index: 138 expected: 0x8B received 0x00
+Error page: 0000001 index: 139 expected: 0x8C received 0x00
+Error page: 0000001 index: 140 expected: 0x8D received 0x00
+Error page: 0000001 index: 141 expected: 0x8E received 0x00
+Error page: 0000001 index: 142 expected: 0x8F received 0x00
+Error page: 0000001 index: 143 expected: 0x90 received 0x00
+Error page: 0000001 index: 144 expected: 0x91 received 0x00
+Error page: 0000001 index: 145 expected: 0x92 received 0x00
+Error page: 0000001 index: 146 expected: 0x93 received 0x00
+Error page: 0000001 index: 147 expected: 0x94 received 0x00
+Error page: 0000001 index: 148 expected: 0x95 received 0x00
+Error page: 0000001 index: 149 expected: 0x96 received 0x00
+Error page: 0000001 index: 150 expected: 0x97 received 0x00
+Error page: 0000001 index: 151 expected: 0x98 received 0x00
+Error page: 0000001 index: 152 expected: 0x99 received 0x00
+Error page: 0000001 index: 153 expected: 0x9A received 0x00
+Error page: 0000001 index: 154 expected: 0x9B received 0x00
+Error page: 0000001 index: 155 expected: 0x9C received 0x00
+Error page: 0000001 index: 156 expected: 0x9D received 0x00
+Error page: 0000001 index: 157 expected: 0x9E received 0x00
+Error page: 0000001 index: 158 expected: 0x9F received 0x00
+Error page: 0000001 index: 159 expected: 0xA0 received 0x00
+Error page: 0000001 index: 160 expected: 0xA1 received 0x00
+Error page: 0000001 index: 161 expected: 0xA2 received 0x00
+Error page: 0000001 index: 162 expected: 0xA3 received 0x00
+Error page: 0000001 index: 163 expected: 0xA4 received 0x00
+Error page: 0000001 index: 164 expected: 0xA5 received 0x00
+Error page: 0000001 index: 165 expected: 0xA6 received 0x00
+Error page: 0000001 index: 166 expected: 0xA7 received 0x00
+Error page: 0000001 index: 167 expected: 0xA8 received 0x00
+Error page: 0000001 index: 168 expected: 0xA9 received 0x00
+Error page: 0000001 index: 169 expected: 0xAA received 0x00
+Error page: 0000001 index: 170 expected: 0xAB received 0x00
+Error page: 0000001 index: 171 expected: 0xAC received 0x00
+Error page: 0000001 index: 172 expected: 0xAD received 0x00
+Error page: 0000001 index: 173 expected: 0xAE received 0x00
+Error page: 0000001 index: 174 expected: 0xAF received 0x00
+Error page: 0000001 index: 175 expected: 0xB0 received 0x00
+Error page: 0000001 index: 176 expected: 0xB1 received 0x00
+Error page: 0000001 index: 177 expected: 0xB2 received 0x00
+Error page: 0000001 index: 178 expected: 0xB3 received 0x00
+Error page: 0000001 index: 179 expected: 0xB4 received 0x00
+Error page: 0000001 index: 180 expected: 0xB5 received 0x00
+Error page: 0000001 index: 181 expected: 0xB6 received 0x00
+Error page: 0000001 index: 182 expected: 0xB7 received 0x00
+Error page: 0000001 index: 183 expected: 0xB8 received 0x00
+Error page: 0000001 index: 184 expected: 0xB9 received 0x00
+Error page: 0000001 index: 185 expected: 0xBA received 0x00
+Error page: 0000001 index: 186 expected: 0xBB received 0x00
+Error page: 0000001 index: 187 expected: 0xBC received 0x00
+Error page: 0000001 index: 188 expected: 0xBD received 0x00
+Error page: 0000001 index: 189 expected: 0xBE received 0x00
+Error page: 0000001 index: 190 expected: 0xBF received 0x00
+Error page: 0000001 index: 191 expected: 0xC0 received 0x00
+Error page: 0000001 index: 192 expected: 0xC1 received 0x00
+Error page: 0000001 index: 193 expected: 0xC2 received 0x00
+Error page: 0000001 index: 194 expected: 0xC3 received 0x00
+Error page: 0000001 index: 195 expected: 0xC4 received 0x00
+Error page: 0000001 index: 196 expected: 0xC5 received 0x00
+Error page: 0000001 index: 197 expected: 0xC6 received 0x00
+Error page: 0000001 index: 198 expected: 0xC7 received 0x00
+Error page: 0000001 index: 199 expected: 0xC8 received 0x00
+Error page: 0000001 index: 200 expected: 0xC9 received 0x00
+Error page: 0000001 index: 201 expected: 0xCA received 0x00
+Error page: 0000001 index: 202 expected: 0xCB received 0x00
+Error page: 0000001 index: 203 expected: 0xCC received 0x00
+Error page: 0000001 index: 204 expected: 0xCD received 0x00
+Error page: 0000001 index: 205 expected: 0xCE received 0x00
+Error page: 0000001 index: 206 expected: 0xCF received 0x00
+Error page: 0000001 index: 207 expected: 0xD0 received 0x00
+Error page: 0000001 index: 208 expected: 0xD1 received 0x00
+Error page: 0000001 index: 209 expected: 0xD2 received 0x00
+Error page: 0000001 index: 210 expected: 0xD3 received 0x00
+Error page: 0000001 index: 211 expected: 0xD4 received 0x00
+Error page: 0000001 index: 212 expected: 0xD5 received 0x00
+Error page: 0000001 index: 213 expected: 0xD6 received 0x00
+Error page: 0000001 index: 214 expected: 0xD7 received 0x00
+Error page: 0000001 index: 215 expected: 0xD8 received 0x00
+Error page: 0000001 index: 216 expected: 0xD9 received 0x00
+Error page: 0000001 index: 217 expected: 0xDA received 0x00
+Error page: 0000001 index: 218 expected: 0xDB received 0x00
+Error page: 0000001 index: 219 expected: 0xDC received 0x00
+Error page: 0000001 index: 220 expected: 0xDD received 0x00
+Error page: 0000001 index: 221 expected: 0xDE received 0x00
+Error page: 0000001 index: 222 expected: 0xDF received 0x00
+Error page: 0000001 index: 223 expected: 0xE0 received 0x00
+Error page: 0000001 index: 224 expected: 0xE1 received 0x00
+Error page: 0000001 index: 225 expected: 0xE2 received 0x00
+Error page: 0000001 index: 226 expected: 0xE3 received 0x00
+Error page: 0000001 index: 227 expected: 0xE4 received 0x00
+Error page: 0000001 index: 228 expected: 0xE5 received 0x00
+Error page: 0000001 index: 229 expected: 0xE6 received 0x00
+Error page: 0000001 index: 230 expected: 0xE7 received 0x00
+Error page: 0000001 index: 231 expected: 0xE8 received 0x00
+Error page: 0000001 index: 232 expected: 0xE9 received 0x00
+Error page: 0000001 index: 233 expected: 0xEA received 0x00
+Error page: 0000001 index: 234 expected: 0xEB received 0x00
+Error page: 0000001 index: 235 expected: 0xEC received 0x00
+Error page: 0000001 index: 236 expected: 0xED received 0x00
+Error page: 0000001 index: 237 expected: 0xEE received 0x00
+Error page: 0000001 index: 238 expected: 0xEF received 0x00
+Error page: 0000001 index: 239 expected: 0xF0 received 0x00
+Error page: 0000001 index: 240 expected: 0xF1 received 0x00
+Error page: 0000001 index: 241 expected: 0xF2 received 0x00
+Error page: 0000001 index: 242 expected: 0xF3 received 0x00
+Error page: 0000001 index: 243 expected: 0xF4 received 0x00
+Error page: 0000001 index: 244 expected: 0xF5 received 0x00
+Error page: 0000001 index: 245 expected: 0xF6 received 0x00
+Error page: 0000001 index: 246 expected: 0xF7 received 0x00
+Error page: 0000001 index: 247 expected: 0xF8 received 0x00
+Error page: 0000001 index: 248 expected: 0xF9 received 0x00
+Error page: 0000001 index: 249 expected: 0xFA received 0x00
+Error page: 0000001 index: 250 expected: 0xFB received 0x00
+Error page: 0000001 index: 251 expected: 0xFC received 0x00
+Error page: 0000001 index: 252 expected: 0xFD received 0x00
+Error page: 0000001 index: 253 expected: 0xFE received 0x00
+Error page: 0000001 index: 254 expected: 0xFF received 0x00
+
+Seconds: 0000001.001
+receiveCounter: 0000002
+receiveRate: 0000002
+Receive errorCount: 255
+Data Received...
+UART Receiver says: read page 2 from the sender, received page size: 255 expected: 255 lastExpected: 000
+01 02 03 04 05 06 07 08 09 0A 0B 0C 0D 0E 0F 10
+11 12 13 14 15 16 17 18 19 1A 1B 1C 1D 1E 1F 20
+21 22 23 24 25 26 27 28 29 2A 2B 2C 2D 2E 2F 30
+31 32 33 34 35 36 37 38 39 3A 3B 3C 3D 3E 3F 40
+41 42 43 44 45 46 47 48 49 4A 4B 4C 4D 4E 4F 50
+51 52 53 54 55 56 57 58 59 5A 5B 5C 5D 5E 5F 60
+61 62 63 64 65 66 67 68 69 6A 6B 6C 6D 6E 6F 70
+71 72 73 74 75 76 77 78 79 7A 7B 7C 7D 7E 7F 80
+81 82 83 84 85 86 87 88 89 8A 8B 8C 8D 8E 8F 90
+91 92 93 94 95 96 97 98 99 9A 9B 9C 9D 9E 9F A0
+A1 A2 A3 A4 A5 A6 A7 A8 A9 AA AB AC AD AE AF B0
+B1 B2 B3 B4 B5 B6 B7 B8 B9 BA BB BC BD BE BF C0
+C1 C2 C3 C4 C5 C6 C7 C8 C9 CA CB CC CD CE CF D0
+D1 D2 D3 D4 D5 D6 D7 D8 D9 DA DB DC DD DE DF E0
+E1 E2 E3 E4 E5 E6 E7 E8 E9 EA EB EC ED EE EF F0
+F1 F2 F3 F4 F5 F6 F7 F8 F9 FA FB FC FD FE FF
+UART Receiver says: Responded with Output buffer page 2, buffer size: 255
+UART Receiver says: Verifying received data...
+
+Seconds: 0000001.100
+receiveCounter: 0000003
+receiveRate: 0000002
+Receive errorCount: 255
+Data Received...
+UART Receiver says: read page 3 from the sender, received page size: 255 expected: 255 lastExpected: 255
+01 02 03 04 05 06 07 08 09 0A 0B 0C 0D 0E 0F 10
+11 12 13 14 15 16 17 18 19 1A 1B 1C 1D 1E 1F 20
+21 22 23 24 25 26 27 28 29 2A 2B 2C 2D 2E 2F 30
+31 32 33 34 35 36 37 38 39 3A 3B 3C 3D 3E 3F 40
+41 42 43 44 45 46 47 48 49 4A 4B 4C 4D 4E 4F 50
+51 52 53 54 55 56 57 58 59 5A 5B 5C 5D 5E 5F 60
+61 62 63 64 65 66 67 68 69 6A 6B 6C 6D 6E 6F 70
+71 72 73 74 75 76 77 78 79 7A 7B 7C 7D 7E 7F 80
+81 82 83 84 85 86 87 88 89 8A 8B 8C 8D 8E 8F 90
+91 92 93 94 95 96 97 98 99 9A 9B 9C 9D 9E 9F A0
+A1 A2 A3 A4 A5 A6 A7 A8 A9 AA AB AC AD AE AF B0
+B1 B2 B3 B4 B5 B6 B7 B8 B9 BA BB BC BD BE BF C0
+C1 C2 C3 C4 C5 C6 C7 C8 C9 CA CB CC CD CE CF D0
+D1 D2 D3 D4 D5 D6 D7 D8 D9 DA DB DC DD DE DF E0
+E1 E2 E3 E4 E5 E6 E7 E8 E9 EA EB EC ED EE EF F0
+F1 F2 F3 F4 F5 F6 F7 F8 F9 FA FB FC FD FE FF
+UART Receiver says: Responded with Output buffer page 3, buffer size: 255
+UART Receiver says: Verifying received data...
+
+Seconds: 0000001.200
+receiveCounter: 0000004
+receiveRate: 0000002
+Receive errorCount: 255
+Data Received...
+UART Receiver says: read page 4 from the sender, received page size: 255 expected: 255 lastExpected: 255
+01 02 03 04 05 06 07 08 09 0A 0B 0C 0D 0E 0F 10
+11 12 13 14 15 16 17 18 19 1A 1B 1C 1D 1E 1F 20
+21 22 23 24 25 26 27 28 29 2A 2B 2C 2D 2E 2F 30
+31 32 33 34 35 36 37 38 39 3A 3B 3C 3D 3E 3F 40
+41 42 43 44 45 46 47 48 49 4A 4B 4C 4D 4E 4F 50
+51 52 53 54 55 56 57 58 59 5A 5B 5C 5D 5E 5F 60
+61 62 63 64 65 66 67 68 69 6A 6B 6C 6D 6E 6F 70
+71 72 73 74 75 76 77 78 79 7A 7B 7C 7D 7E 7F 80
+81 82 83 84 85 86 87 88 89 8A 8B 8C 8D 8E 8F 90
+91 92 93 94 95 96 97 98 99 9A 9B 9C 9D 9E 9F A0
+A1 A2 A3 A4 A5 A6 A7 A8 A9 AA AB AC AD AE AF B0
+B1 B2 B3 B4 B5 B6 B7 B8 B9 BA BB BC BD BE BF C0
+C1 C2 C3 C4 C5 C6 C7 C8 C9 CA CB CC CD CE CF D0
+D1 D2 D3 D4 D5 D6 D7 D8 D9 DA DB DC DD DE DF E0
+E1 E2 E3 E4 E5 E6 E7 E8 E9 EA EB EC ED EE EF F0
+F1 F2 F3 F4 F5 F6 F7 F8 F9 FA FB FC FD FE FF
+UART Receiver says: Responded with Output buffer page 4, buffer size: 255
+UART Receiver says: Verifying received data...
+
+Seconds: 0000001.300
+receiveCounter: 0000005
+receiveRate: 0000002
+Receive errorCount: 255
+Data Received...
+UART Receiver says: read page 5 from the sender, received page size: 255 expected: 255 lastExpected: 255
+01 02 03 04 05 06 07 08 09 0A 0B 0C 0D 0E 0F 10
+11 12 13 14 15 16 17 18 19 1A 1B 1C 1D 1E 1F 20
+21 22 23 24 25 26 27 28 29 2A 2B 2C 2D 2E 2F 30
+31 32 33 34 35 36 37 38 39 3A 3B 3C 3D 3E 3F 40
+41 42 43 44 45 46 47 48 49 4A 4B 4C 4D 4E 4F 50
+51 52 53 54 55 56 57 58 59 5A 5B 5C 5D 5E 5F 60
+61 62 63 64 65 66 67 68 69 6A 6B 6C 6D 6E 6F 70
+71 72 73 74 75 76 77 78 79 7A 7B 7C 7D 7E 7F 80
+81 82 83 84 85 86 87 88 89 8A 8B 8C 8D 8E 8F 90
+91 92 93 94 95 96 97 98 99 9A 9B 9C 9D 9E 9F A0
+A1 A2 A3 A4 A5 A6 A7 A8 A9 AA AB AC AD AE AF B0
+B1 B2 B3 B4 B5 B6 B7 B8 B9 BA BB BC BD BE BF C0
+C1 C2 C3 C4 C5 C6 C7 C8 C9 CA CB CC CD CE CF D0
+D1 D2 D3 D4 D5 D6 D7 D8 D9 DA DB DC DD DE DF E0
+E1 E2 E3 E4 E5 E6 E7 E8 E9 EA EB EC ED EE EF F0
+F1 F2 F3 F4 F5 F6 F7 F8 F9 FA FB FC FD FE FF
+UART Receiver says: Responded with Output buffer page 5, buffer size: 255
+UART Receiver says: Verifying received data...
