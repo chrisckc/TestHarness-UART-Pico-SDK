@@ -6,9 +6,10 @@ and this UART example:
 https://github.com/raspberrypi/pico-examples/blob/master/uart/uart_advanced/uart_advanced.c
 
 
-### I have modified it to improve the serial output and added a separate, single byte, data transfer before the 255 byte buffer is transferred.
-
+### I have modified the way it operates to first send a separate, single byte, data transfer before the 255 byte buffer is transferred.
 I increased the send rate from 1 per second to 10 per second.
+
+There is also a lot of extra serial output and error capturing and reporting has been added.
 
 In order to properly view the serial output you will need to use a proper terminal emulator, ie. one that supports ANSI control characters. I use iTerm2 on MacOS with a command to launch screen against the usb tty.
 
@@ -24,7 +25,9 @@ In response to this, the Receiver Pico, sends back it own buffer to the sender i
 There are 2 issues:
 
 #### Issue 1:
-The receiver always sees an extraneous interrupt after startup, well before any data is actually sent to it. Inside the interrupt, uart_is_readable(uart0) returns true and then uart_getc(uart0) returns a null byte. this happens regardless of baud rate or whether the FIFO is enabled or not.
+The receiver always sees an extraneous interrupt after startup, well before any data is actually sent to it. Inside the interrupt, uart_is_readable(uart0) returns true and then uart_getc(uart0) returns a null byte. This happens regardless of baud rate or whether the FIFO is enabled or not.
+This results in the receiver initially reporting an empty page being received before data is actually sent to it.
+Data only starts to be sent to the receiver 1 second after it is ready and waiting to receive it (refer to setup code).
 
 #### Issue 2:
 The sender is unable to reliably receive a response from the receiver at baud rates above 115200, the higher the baud rate the higher the error rate.
@@ -45,7 +48,7 @@ At 460800 baud the error rate is around 0%
 
 At 921600 baud the error rate is 32%
 
-##### Notes:
+#### Notes:
 
 The above tested were conducted with the FIFO disabled as in the uart_advanced example.
 

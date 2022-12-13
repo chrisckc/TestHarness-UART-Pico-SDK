@@ -1,5 +1,6 @@
 // UART Test Harness by Chris Claxton
-// Based on the SPI master-slave example from the Pico examples repo
+// Based on the SPI master-slave and uart_advanced examples from the Pico examples repo
+// UART_Sender
 
 #include <stdio.h>
 #include <string.h>
