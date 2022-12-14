@@ -31,7 +31,7 @@
 #define DATA_BITS (8)
 #define PARITY    UART_PARITY_NONE
 #define STOP_BITS (1)
-#define FIFO_ENABLED (false)
+#define FIFO_ENABLED (true)
 
 // Default for UART0 is GP0 and GP1, see the GPIO function select table in the datasheet for information on which other pins can be used.
 #define UART_TX_PIN (0)
@@ -137,7 +137,9 @@ void resetAllRxVars() {
 }
 
 void sendTestData(uint8_t length) {
-    printf("UART Sender says: Sending Output buffer...  (page %u, buffer size: %03u) \r\n", sendCounter, length);
+    if ((DEBUG_SERIAL_OUTPUT_PAGE_LIMIT == 0) || (receiveCounter <= DEBUG_SERIAL_OUTPUT_PAGE_LIMIT)) { // optionally only show the results up to DEBUG_SERIAL_OUTPUT_PAGE_LIMIT
+        printf("UART Sender says: Sending Output buffer...  (page %u, buffer size: %03u) \r\n", sendCounter, length);
+    }
     gpio_put(DEBUG_PIN3, 0);
     // Send the data length value on the UART so the receiver knows what to expect next
     if (uart_is_writable(UART_ID)) {
