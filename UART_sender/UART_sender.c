@@ -31,7 +31,7 @@
 #define DATA_BITS (8)
 #define PARITY    UART_PARITY_NONE
 #define STOP_BITS (1)
-#define FIFO_ENABLED (true)
+#define FIFO_ENABLED (false)
 
 // Default for UART0 is GP0 and GP1, see the GPIO function select table in the datasheet for information on which other pins can be used.
 #define UART_TX_PIN (0)
@@ -302,8 +302,10 @@ int main() {
                 printf("Receive incompleteReceiveCount: %03u         \r\n", incompleteReceiveCount);
                 printf("Receive FailureRate: %11.7f percent  \r\n", 100.0f * errorCount / (sendCounter > 0 ? sendCounter : 1));
             }
+            gpio_put(DEBUG_PIN3, 0);
             // Send the test data
             sendTestData(BUF_LEN);
+            gpio_put(DEBUG_PIN3, 1);
             gpio_put(LED_BUILTIN, 0); // turn off the LED
         }
 

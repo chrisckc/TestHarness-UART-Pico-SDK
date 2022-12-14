@@ -38,7 +38,7 @@ At 460800 baud the error rate is around 95%
 
 At 921600 baud the error rate is 100%
 
-The error seems to be related to the use of the USB serial during the reception of data on UART0, if is disable the part of the test code which is outputting some results from the UART0 send operation while the UART0 receive operation is in progress, the error rate drops significantly, but not completely at all supported baud rates.
+The error seems to be related to the use of the USB serial during the reception of data on UART0, if I disable the part of the test code which is outputting some results from the UART0 send operation while the UART0 receive operation is in progress, the error rate drops significantly, but not completely at all supported baud rates.
 
 For UART0 receive without any simultaneous USB serial output:
 
@@ -50,7 +50,7 @@ At 921600 baud the error rate is 32%
 
 #### Notes:
 
-The above tested were conducted with the FIFO disabled as in the uart_advanced example.
+The above tests were conducted with the FIFO disabled as in the uart_advanced example.
 
 With the FIFO enabled, issue 1 still occurs at all baud rates.
 

@@ -18,8 +18,8 @@
 #define DEBUG_PIN_INITIAL_STATE (1)
 
 // Serial data output and debugging options
-#define DEBUG_SERIAL_OUTPUT_SCROLLING (false) // If not scrolling the terminal position is reset using escape sequences, proper terminal emulator required
-#define DEBUG_SERIAL_OUTPUT_PAGE_LIMIT (0) // Set to zero to show all pages
+#define DEBUG_SERIAL_OUTPUT_SCROLLING (true) // If not scrolling the terminal position is reset using escape sequences, proper terminal emulator required
+#define DEBUG_SERIAL_OUTPUT_PAGE_LIMIT (5) // Set to zero to show all pages
 
 #define UART_ID uart0
 //#define BAUD_RATE (115200)
@@ -30,7 +30,7 @@
 #define DATA_BITS (8)
 #define PARITY    UART_PARITY_NONE
 #define STOP_BITS (1)
-#define FIFO_ENABLED (true)
+#define FIFO_ENABLED (false)
 
 // Default for UART0 is GP0 and GP1, see the GPIO function select table in the datasheet for information on which other pins can be used.
 #define UART_TX_PIN (0)
@@ -149,6 +149,9 @@ int main() {
     gpio_set_dir(DEBUG_PIN4, GPIO_OUT);
     gpio_put(DEBUG_PIN4, DEBUG_PIN_INITIAL_STATE);
 
+    sleep_us(10); // delay so we can easily see the debug pulse
+    gpio_put(DEBUG_PIN3, 0); // signal the start of UART config
+
     // Set up our UART with a basic baud rate.
     uart_init(UART_ID, 2400);
 
@@ -185,6 +188,8 @@ int main() {
     // Now enable the UART to send interrupts - RX only
     uart_set_irq_enables(UART_ID, true, false);
 
+    gpio_put(DEBUG_PIN3, 1); // signal the end of UART config
+
     // Initialize output buffer
     for (size_t i = 0; i < BUF_LEN; ++i) {
         // bit-inverted from i. The values should be: {0xff, 0xfe, 0xfd...}
@@ -206,21 +211,24 @@ int main() {
         if (uartDataReady) {
             receiveCounter++;
             gpio_put(LED_BUILTIN, 1); // turn on the LED
-            gpio_put(DEBUG_PIN3, 0);
-            // Send data back to the sender...
-            // Send the data length value on the UART so the other side knows what to expect next
-            if (uart_is_writable(UART_ID)) {
-                uart_putc_raw(UART_ID, BUF_LEN); // Send the buffer length on the UART first
-                // Write the output buffer to the UART
-                for (uint8_t x = 0; x < BUF_LEN; ++x) {
-                    uart_putc_raw(UART_ID, out_buf[x]);
+            // Only send a response to the sender if we actually received some data (accounts for the phantom byte issue at startup)
+            if (bytesExpected > 0) {
+                gpio_put(DEBUG_PIN3, 0);
+                // Send data back to the sender...
+                // Send the data length value on the UART so the other side knows what to expect next
+                if (uart_is_writable(UART_ID)) {
+                    uart_putc_raw(UART_ID, BUF_LEN); // Send the buffer length on the UART first
+                    // Write the output buffer to the UART
+                    for (uint8_t x = 0; x < BUF_LEN; ++x) {
+                        uart_putc_raw(UART_ID, out_buf[x]);
+                    }
+                    responseSent = true;
+                } else {
+                    responseSent = false;
+                    sendErrorCount++;
                 }
-                responseSent = true;
-            } else {
-                responseSent = false;
-                sendErrorCount++;
+                gpio_put(DEBUG_PIN3, 1);
             }
-            gpio_put(DEBUG_PIN3, 1);
 
             // Keep track of seconds since start
             currentMillis = to_ms_since_boot(get_absolute_time());
@@ -231,6 +239,8 @@ int main() {
                 receiveRate = receiveCounter - lastReceiveCount;
                 lastReceiveCount = receiveCounter;
             }
+            sleep_us(10); // delay so we can easily see the debug pulse
+            gpio_put(DEBUG_PIN3, 0);
             if ((DEBUG_SERIAL_OUTPUT_PAGE_LIMIT == 0) || (receiveCounter <= DEBUG_SERIAL_OUTPUT_PAGE_LIMIT)) { // optionally only show the results up to DEBUG_SERIAL_OUTPUT_PAGE_LIMIT
                 // Reset the previous terminal position if we are not scrolling the output
                 if (!DEBUG_SERIAL_OUTPUT_SCROLLING) {
@@ -246,8 +256,6 @@ int main() {
                 printf("Send errorCount: %03u         \r\n", sendErrorCount);
                 printf("Data Received...                                                                \r\n");
 
-                //sleep_us(10); // delay so we can easily see the debug pulse
-                gpio_put(DEBUG_PIN3, 0);
                 // print data to the serial port
                 printf("UART Receiver says: read page %u from the sender, received page size: %03u expected: %03u lastExpected: %03u \r\n", receiveCounter, bytesAvailable, bytesExpected, lastBytesExpected);
                 // Write the input buffer out to the USB serial port
