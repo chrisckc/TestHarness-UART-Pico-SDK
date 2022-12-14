@@ -262,7 +262,7 @@ int main() {
                 printBuffer(in_buf, BUF_LEN);
                 if (responseSent) {
                     printf("UART Receiver says: Responded with Output buffer page %u, buffer size: %03u \r\n", receiveCounter, BUF_LEN);
-                } else {
+                } else if (bytesExpected > 0) {
                     printf("UART Receiver says: ERROR!!! Could not Respond with Output buffer page %u, uart_is_writable returned false \r\n", receiveCounter);
                 }
                 printf("UART Receiver says: Verifying received data... \r\n");
