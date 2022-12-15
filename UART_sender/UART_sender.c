@@ -20,7 +20,7 @@
 // Serial data output and debugging options
 #define DEBUG_SERIAL_OUTPUT_SCROLLING (false) // If not scrolling the terminal position is reset using escape sequences, proper terminal emulator required
 #define DEBUG_SERIAL_OUTPUT_PAGE_LIMIT (0) // Set to zero to show all pages
-#define DEBUG_SERIAL_OUTPUT_DURING_UART_RECEIVE (true) // Set to false to prevent USB Serial debug output during UART data reception
+#define DEBUG_SERIAL_OUTPUT_DURING_UART_RECEIVE (false) // Set to false to prevent USB Serial debug output during UART data reception
 
 #define UART_ID uart0
 //#define BAUD_RATE (115200)
@@ -31,7 +31,7 @@
 #define DATA_BITS (8)
 #define PARITY    UART_PARITY_NONE
 #define STOP_BITS (1)
-#define FIFO_ENABLED (true)
+#define FIFO_ENABLED (false)
 
 // Default for UART0 is GP0 and GP1, see the GPIO function select table in the datasheet for information on which other pins can be used.
 #define UART_TX_PIN (0)

@@ -18,8 +18,8 @@
 #define DEBUG_PIN_INITIAL_STATE (1)
 
 // Serial data output and debugging options
-#define DEBUG_SERIAL_OUTPUT_SCROLLING (true) // If not scrolling the terminal position is reset using escape sequences, proper terminal emulator required
-#define DEBUG_SERIAL_OUTPUT_PAGE_LIMIT (5) // Set to zero to show all pages
+#define DEBUG_SERIAL_OUTPUT_SCROLLING (false) // If not scrolling the terminal position is reset using escape sequences, proper terminal emulator required
+#define DEBUG_SERIAL_OUTPUT_PAGE_LIMIT (0) // Set to zero to show all pages
 
 #define UART_ID uart0
 //#define BAUD_RATE (115200)
