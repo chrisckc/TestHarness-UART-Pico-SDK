@@ -46,7 +46,8 @@ unsigned int lastSendMillis = 0, sendInterval = 100; // send every 100 milliseco
 
 unsigned int seconds = 0, lastSeconds = 0;
 unsigned int loopCounter = 0, lastLoopCounter = 0;
-unsigned int receiveCounter = 0, lastReceiveCount = 0, receiveRate = 0, errorCount = 0, incompleteReceiveCount = 0, sendErrorCount = 0;
+unsigned int receiveCounter = 0, lastReceiveCount = 0, receiveRate = 0, receiveErrorCount = 0, incompleteReceiveCount = 0, sendErrorCount = 0;
+unsigned int receivedBytesErrorCount = 0;
 
 volatile  unsigned int _startByte = 0; // A pre-agreed start byte between the sender and receiver, not implemented yet.
 volatile  unsigned int _byteIndex = 0, _expectedByteCount = 0, _bytesReceived = 0;
@@ -70,27 +71,21 @@ void printBuffer(uint8_t buf[], size_t len) {
     }
 }
 
-bool verifyInBuffer(unsigned int page) {
+bool verifyInBuffer(unsigned int page, bool printOnlyFirstError) {
     bool success = true;
     for (uint8_t i = 0; i < BUF_LEN; ++i) {
         uint8_t inverted = (uint8_t)~i;
         if (in_buf[i] != inverted) {
-            printf("Error page: %07u index: %03u expected: 0x%02X received 0x%02X    \r\n", page, i, inverted, in_buf[i]);
-            errorCount++;
+            receivedBytesErrorCount++;
+            if (success && printOnlyFirstError) {
+                printf("ERROR! page: %07u First Error at index: %03u expected: 0x%02X received: 0x%02X    \r\n", page, i, inverted, in_buf[i]);
+            } else if (!printOnlyFirstError) {
+                printf("ERROR! page: %07u index: %03u expected: 0x%02X received: 0x%02X    \r\n", page, i, inverted, in_buf[i]);
+            }
             success = false;
         }
     }
     return success;
-}
-
-void printFirstMissingByte(unsigned int page) {
-    for (uint8_t i = 0; i < BUF_LEN; ++i) {
-        uint8_t inverted = (uint8_t)~i;
-        if (in_buf[i] != inverted) {
-            printf("ERROR! page: %07u first missing byte at index: %03u expected: 0x%02X received 0x%02X    \r\n", page, i, inverted, in_buf[i]);
-            break;
-        }
-    }
 }
 
 void clearBuffer(uint8_t buf[], size_t len) {
@@ -136,7 +131,7 @@ void resetAllRxVars() {
     bytesAvailable = 0;
 }
 
-void sendTestData(uint8_t length) {
+void sendBuffer(uint8_t length) {
     if ((DEBUG_SERIAL_OUTPUT_PAGE_LIMIT == 0) || (receiveCounter <= DEBUG_SERIAL_OUTPUT_PAGE_LIMIT)) { // optionally only show the results up to DEBUG_SERIAL_OUTPUT_PAGE_LIMIT
         printf("UART Sender says: Sending Output buffer...  (page %u, buffer size: %03u) \r\n", sendCounter, length);
     }
@@ -279,11 +274,11 @@ int main() {
             if ((DEBUG_SERIAL_OUTPUT_PAGE_LIMIT == 0) || (receiveCounter <= DEBUG_SERIAL_OUTPUT_PAGE_LIMIT)) { // optionally only show the results up to DEBUG_SERIAL_OUTPUT_PAGE_LIMIT
                 if ((receiveCounter + incompleteReceiveCount) < sendCounter) {
                     incompleteReceiveCount++;
-                    errorCount++;
                     printf("ERROR!!! The page %u response was incomplete!!! _expectedByteCount: %03u and _bytesReceived: %03u should equal the Buffer Length: %03u\r\n", sendCounter, _expectedByteCount, _bytesReceived, BUF_LEN);
                     printBuffer(in_buf, BUF_LEN);
                     printf("UART Sender says: ERROR!!! Received incomplete buffer!!! (printed above) \r\n");
-                    printFirstMissingByte(sendCounter);
+                    bool verifySuccess = verifyInBuffer(sendCounter, true);
+                    if (!verifySuccess) receiveErrorCount++;
                     clearBuffer(in_buf, BUF_LEN);
                     resetAllRxVars(); // recover from this anomaly
                 }
@@ -298,15 +293,17 @@ int main() {
                 printf("sendCounter: %07u         \r\n", sendCounter);
                 printf("sendRate: %07u         \r\n", sendRate);
                 printf("Send errorCount: %03u         \r\n", sendErrorCount);
+                printf("Send FailureRate: %11.7f percent  \r\n", 100.0f * sendErrorCount / (sendCounter > 0 ? sendCounter : 1));
                 printf("receiveCounter: %07u         \r\n", receiveCounter);
                 printf("receiveRate: %07u         \r\n", receiveRate);
-                printf("Receive errorCount: %03u         \r\n", errorCount);
+                printf("Receive errorCount: %03u         \r\n", receiveErrorCount);
+                printf("Receive FailureRate: %11.7f percent  \r\n", 100.0f * receiveErrorCount / (sendCounter > 0 ? sendCounter : 1));
                 printf("Receive incompleteReceiveCount: %03u         \r\n", incompleteReceiveCount);
-                printf("Receive FailureRate: %11.7f percent  \r\n", 100.0f * errorCount / (sendCounter > 0 ? sendCounter : 1));
+                printf("receivedBytesErrorCount: %03u         \r\n", receivedBytesErrorCount);
             }
             gpio_put(DEBUG_PIN3, 0);
             // Send the test data
-            sendTestData(BUF_LEN);
+            sendBuffer(BUF_LEN);
             gpio_put(DEBUG_PIN3, 1);
             gpio_put(LED_BUILTIN, 0); // turn off the LED
         }
@@ -322,9 +319,12 @@ int main() {
                 printBuffer(in_buf, BUF_LEN);
                 printf("UART Sender says: Verifying received data...                                         \r\n");
                 if (bytesExpected != BUF_LEN) {
+                    receiveErrorCount++;
                     printf("ERROR!!! page: %u bytesExpected: %03u should equal the Buffer Length: %03u\r\n", receiveCounter, bytesExpected, BUF_LEN);
                 }
-                verifyInBuffer(receiveCounter);
+                bool verifySuccess = verifyInBuffer(receiveCounter, false);
+                // Check that we only record the error once for each receive cycle
+                if (bytesExpected == BUF_LEN && !verifySuccess) receiveErrorCount++;
             }
             clearBuffer(in_buf, BUF_LEN);
             lastBytesExpected = bytesExpected;

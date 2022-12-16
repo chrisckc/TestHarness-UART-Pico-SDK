@@ -41,7 +41,8 @@ uint8_t out_buf[BUF_LEN], in_buf[BUF_LEN];
 
 bool ledState = false;
 unsigned int seconds = 0, lastSeconds = 0;
-unsigned int receiveCounter = 0, lastReceiveCount = 0, receiveRate = 0, errorCount = 0, sendErrorCount = 0;
+unsigned int receiveCounter = 0, lastReceiveCount = 0, receiveRate = 0, receiveErrorCount = 0, sendCounter = 0, sendErrorCount = 0;
+unsigned int receivedBytesErrorCount = 0;
 
 volatile  unsigned int _startByte = 0; // A pre-agreed start byte between the sender and receiver, not implemented yet.
 volatile  unsigned int _byteIndex = 0, _expectedByteCount = 0, _bytesReceived = 0;
@@ -63,12 +64,17 @@ void printBuffer(uint8_t buf[], size_t len) {
         printf("   \r\n");
     }
 }
-bool verifyInBuffer(unsigned int page) {
+
+bool verifyInBuffer(unsigned int page, bool printOnlyFirstError) {
     bool success = true;
     for (uint8_t i = 0; i < BUF_LEN; ++i) {
         if (in_buf[i] != i + 1) {
-            printf("Error page: %07u index: %03u expected: 0x%02X received 0x%02X\r\n", page, i, i + 1, in_buf[i]);
-            errorCount++;
+            receivedBytesErrorCount++;
+            if (success && printOnlyFirstError) {
+                printf("ERROR! page: %07u First Error at index: %03u expected: 0x%02X received: 0x%02X    \r\n", page, i, i + 1, in_buf[i]);
+            } else if (!printOnlyFirstError) {
+                printf("ERROR! page: %07u index: %03u expected: 0x%02X received: 0x%02X    \r\n", page, i, i + 1, in_buf[i]);
+            }
             success = false;
         }
     }
@@ -223,6 +229,7 @@ int main() {
                         uart_putc_raw(UART_ID, out_buf[x]);
                     }
                     responseSent = true;
+                    sendCounter++;
                 } else {
                     responseSent = false;
                     sendErrorCount++;
@@ -250,10 +257,12 @@ int main() {
                 // Print the header info
                 printf("\r\nSeconds: %07u.%03u       \r\n", seconds, currentMillis - startMillis - (seconds * 1000));
                 printf("receiveCounter: %07u         \r\n", receiveCounter);
-                printf("receiveRate: %07u         \r\n", receiveRate);
-                printf("Receive errorCount: %03u         \r\n", errorCount);
-                printf("Receive FailureRate: %11.7f percent  \r\n", 100.0f * errorCount / (receiveCounter > 0 ? receiveCounter : 1));
-                printf("Send errorCount: %03u         \r\n", sendErrorCount);
+                printf("receiveRate: %07u            \r\n", receiveRate);
+                printf("Receive errorCount: %03u         \r\n", receiveErrorCount);
+                printf("Receive FailureRate: %11.7f percent  \r\n", 100.0f * receiveErrorCount / (receiveCounter > 0 ? receiveCounter : 1));
+                printf("receivedBytesErrorCount: %03u         \r\n", receivedBytesErrorCount);
+                printf("Send errorCount: %03u             \r\n", sendErrorCount);
+                printf("Send FailureRate: %11.7f percent  \r\n", 100.0f * sendErrorCount / (sendCounter > 0 ? sendCounter : 1));
                 printf("Data Received...                                                                \r\n");
 
                 // print data to the serial port
@@ -267,9 +276,12 @@ int main() {
                 }
                 printf("UART Receiver says: Verifying received data... \r\n");
                 if (bytesExpected != BUF_LEN) {
+                    receiveErrorCount++;
                     printf("ERROR!!! page: %u bytesExpected: %03u should equal the Buffer Length: %03u\r\n", receiveCounter, bytesExpected, BUF_LEN);
                 }
-                verifyInBuffer(receiveCounter);
+                bool verifySuccess = verifyInBuffer(receiveCounter, false);
+                // Check that we only record the error once for each receive cycle
+                if (bytesExpected == BUF_LEN && !verifySuccess) receiveErrorCount++;
             }
             clearBuffer(in_buf, BUF_LEN);
             lastBytesExpected = bytesExpected;
